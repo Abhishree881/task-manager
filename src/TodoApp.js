@@ -2,6 +2,8 @@
 import React, { useContext, useState } from "react";
 import { TaskContext } from "./TaskContext";
 import "./TodoApp.css"; // Import the CSS file for styling
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 
 const TodoApp = () => {
   const { state, dispatch } = useContext(TaskContext);
@@ -36,6 +38,8 @@ const TodoApp = () => {
       };
       dispatch({ type: "ADD_TASK", payload: newTaskObject });
       setNewTask("");
+    } else {
+      Swal.fire("error", "Field can not be empty", "error");
     }
   };
 
@@ -50,11 +54,16 @@ const TodoApp = () => {
   };
 
   const saveEditedTask = () => {
-    dispatch({
-      type: "UPDATE_TASK",
-      payload: { id: editTaskId, title: editTaskTitle },
-    });
-    closeEditDialog();
+    console.log(editTaskTitle);
+    if (editTaskTitle.trim() !== "") {
+      dispatch({
+        type: "UPDATE_TASK",
+        payload: { id: editTaskId, title: editTaskTitle },
+      });
+      closeEditDialog();
+    } else {
+      Swal.fire("error", "Field can not be empty", "error");
+    }
   };
 
   const toggleTaskCompletion = (taskId, completed) => {
