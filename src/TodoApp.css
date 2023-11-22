@@ -185,3 +185,28 @@ add-task-button {
 .edit-dialog button:last-child {
     background-color: #ccc;
 }
+
+.swal2-popup {
+    background-color: #2d2d2d;
+    /* Dark background color */
+    color: #ffffff;
+    /* Text color */
+}
+
+.swal2-title {
+    color: #ffffff;
+    /* Title text color */
+}
+
+.swal2-content {
+    color: #cccccc;
+    /* Content text color */
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #ffffff;
+    /* Button text color */
+    background-color: #555555;
+    /* Button background color */
+}
