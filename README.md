@@ -14,9 +14,8 @@ A simple Todo App built using React with features to add, edit, mark tasks as co
 - Edit existing tasks
 - Mark tasks as completed
 - Filter tasks by completion status
-- Sort tasks in descending order based on ID
+- Sorted tasks in descending order based on ID
 - Dark-themed user interface
-- Local data storage to prevent data loss on refresh
 - Error handling for API failures
 - Display total counts of tasks, completed tasks, and incomplete tasks
 
@@ -64,7 +63,6 @@ Edit a task by clicking the "Edit" button next to the task.
 Mark a task as completed by checking the checkbox.
 Filter tasks by selecting the desired filter button (All, Completed, Incomplete).
 View total counts of tasks, completed tasks, and incomplete tasks.
-Local Data Storage.
 
 ## Error Handling
 
