@@ -64,8 +64,7 @@ Edit a task by clicking the "Edit" button next to the task.
 Mark a task as completed by checking the checkbox.
 Filter tasks by selecting the desired filter button (All, Completed, Incomplete).
 View total counts of tasks, completed tasks, and incomplete tasks.
-Local Data Storage
-The app stores data locally to prevent data loss on refresh. API calls are made only if data is not present locally.
+Local Data Storage.
 
 ## Error Handling
 
