@@ -85,24 +85,34 @@ const TodoApp = () => {
 
   return (
     <div className="todo-app-container">
-      <TodoHeader />
-      <FilterButtons filter={filter} setFilter={setFilter} />
-      <TaskCounts
-        totalTasks={totalTasks}
-        completedTasks={completedTasks}
-        incompleteTasks={incompleteTasks}
-      />
-      <TaskList
-        filteredTasks={filteredTasks}
-        toggleTaskCompletion={toggleTaskCompletion}
-        openEditDialog={openEditDialog}
-        deleteTask={deleteTask}
-      />
-      <AddTaskForm
-        newTask={newTask}
-        setNewTask={setNewTask}
-        addTask={addTask}
-      />
+      <div className="header">
+        <div className="subhead">
+          <TodoHeader />
+          <FilterButtons filter={filter} setFilter={setFilter} />
+        </div>
+        <TaskCounts
+          totalTasks={totalTasks}
+          completedTasks={completedTasks}
+          incompleteTasks={incompleteTasks}
+        />
+      </div>
+      <div className="main">
+        <div className="add-task">
+          <AddTaskForm
+            newTask={newTask}
+            setNewTask={setNewTask}
+            addTask={addTask}
+          />
+        </div>
+        <div className="tasks-list">
+          <TaskList
+            filteredTasks={filteredTasks}
+            toggleTaskCompletion={toggleTaskCompletion}
+            openEditDialog={openEditDialog}
+            deleteTask={deleteTask}
+          />
+        </div>
+      </div>
       {editTaskId !== null && (
         <EditDialog
           editTaskId={editTaskId}

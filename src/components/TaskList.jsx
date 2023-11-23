@@ -1,4 +1,6 @@
 import React from "react";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const TaskList = ({
   filteredTasks,
@@ -10,25 +12,29 @@ const TaskList = ({
     <ul className="task-list">
       {filteredTasks.map((task) => (
         <li key={task.id}>
-          <input
-            type="checkbox"
-            checked={task.completed}
-            onChange={() => toggleTaskCompletion(task.id, task.completed)}
-          />
-          {task.completed ? (
-            <span className="completed-task">{task.title}</span>
-          ) : (
-            <span>{task.title}</span>
-          )}
-          <button
-            className="edit-button"
-            onClick={() => openEditDialog(task.id, task.title)}
-          >
-            Edit
-          </button>
-          <button className="delete-button" onClick={() => deleteTask(task.id)}>
-            Delete
-          </button>
+          <div className="task">
+            <input
+              type="checkbox"
+              className="custom-checkbox"
+              checked={task.completed}
+              onChange={() => toggleTaskCompletion(task.id, task.completed)}
+            />
+            {task.completed ? (
+              <span className="completed-task">{task.title}</span>
+            ) : (
+              <span>{task.title}</span>
+            )}
+          </div>
+          <div className="task-buttons">
+            <EditNoteIcon
+              className="edit-button"
+              onClick={() => openEditDialog(task.id, task.title)}
+            />
+            <DeleteOutlineIcon
+              className="delete-button"
+              onClick={() => deleteTask(task.id)}
+            />
+          </div>
         </li>
       ))}
     </ul>

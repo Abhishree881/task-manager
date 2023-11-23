@@ -1,10 +1,6 @@
-/* TodoApp.css */
 .todo-app-container {
-    max-width: 600px;
-    margin: auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     background-color: #1e1e1e;
     /* Dark background color */
     color: #fff;
@@ -30,11 +26,32 @@
     /* Darker background color for the active filter */
 }
 
-
-
 .task-counts p {
-    margin: 10px 0;
-    font-size: 16px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.task-counts p:hover {
+    background-color: #555;
+}
+
+.completed {
+    color: #00FF00
+}
+
+.incomplete {
+    color: #FFFF99;
+}
+
+.task-counts {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .task-list {
@@ -46,6 +63,11 @@
     display: flex;
     align-items: center;
     margin: 10px 0;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+
+    padding: .8% 2%;
+    border-radius: 10px;
 }
 
 .task-list input[type="checkbox"] {
@@ -54,13 +76,12 @@
 
 .completed-task {
     text-decoration: line-through;
-    color: #888;
+    color: #d9d9d9;
 }
 
 .edit-button,
-.delete-button,
-add-task-button {
-    background-color: #3498db;
+.delete-button {
+    background-color: #333;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -70,49 +91,62 @@ add-task-button {
     margin-left: 5px;
 }
 
+.edit-button {
+    color: #FFFF99;
+}
+
+.delete-button {
+    color: #FFAAAA;
+}
+
 .add-task-container {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 600px;
     display: flex;
     align-items: center;
     background-color: #1e1e1e;
     /* Dark background color */
-    padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-task {
+    background-color: black;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 .add-task-container input {
     flex: 1;
-    padding: 8px;
+    padding: 18px;
     margin-right: 10px;
-    background-color: #333;
+    background-color: #1e1e1e;
     /* Dark input background color */
     color: #fff;
     /* Light input text color */
-    border: 1px solid #555;
+    border: none;
     /* Dark input border color */
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 .add-task-container button {
-    background-color: #3498db;
+    background-color: #333;
     color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 18px 38px;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.add-task-container button:hover {
+    background-color: #555;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .logo {
@@ -151,6 +185,9 @@ add-task-button {
     /* Light text color */
     padding: 20px;
     border-radius: 8px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -159,7 +196,7 @@ add-task-button {
 }
 
 .edit-dialog input {
-    width: 100%;
+    /* width: 100%; */
     padding: 8px;
     margin-bottom: 10px;
     background-color: #333;
@@ -182,8 +219,16 @@ add-task-button {
     margin-right: 5px;
 }
 
+.edit-dialog button:hover {
+    background-color: #5ea6d5;
+}
+
 .edit-dialog button:last-child {
-    background-color: #ccc;
+    background-color: #333;
+}
+
+.edit-dialog button:last-child:hover {
+    background-color: #444;
 }
 
 .swal2-popup {
@@ -209,4 +254,83 @@ add-task-button {
     /* Button text color */
     background-color: #555555;
     /* Button background color */
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0 2%;
+    border-radius: 15px;
+}
+
+.subhead {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main {
+    background-color: black;
+    border-radius: 15px;
+    margin: 1% 0;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.add-task {
+    padding: 2%;
+}
+
+.tasks-list {
+    padding: 2%;
+    padding-top: 0;
+}
+
+.main::-webkit-scrollbar {
+    width: 0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+}
+
+.custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    cursor: pointer;
+    /* Change border color */
+    background-color: #fff;
+    /* Change background color */
+    position: relative;
+    margin-right: 10px;
+    appearance: none;
+    background-color: #333;
+    /* Remove default appearance */
+    outline: none;
+    /* Remove default focus outline */
+}
+
+.custom-checkbox:checked {
+    background-color: #333;
+    border-color: #333;
+    /* Change background color for checked state */
+}
+
+.custom-checkbox:checked::after {
+    content: '\2713';
+    /* Unicode checkmark character */
+    font-size: 14px;
+    color: #fff;
+    color: #00FF00;
+    /* Change color of the checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

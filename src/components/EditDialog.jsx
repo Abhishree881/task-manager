@@ -16,8 +16,10 @@ const EditDialog = ({
           value={editTaskTitle}
           onChange={(e) => setEditTaskTitle(e.target.value)}
         />
-        <button onClick={saveEditedTask}>Save</button>
-        <button onClick={closeEditDialog}>Cancel</button>
+        <div>
+          <button onClick={saveEditedTask}>Save</button>
+          <button onClick={closeEditDialog}>Cancel</button>
+        </div>
       </div>
     </div>
   );
