@@ -2,6 +2,7 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #1e1e1e;
+    height: 100vh;
     /* Dark background color */
     color: #fff;
     /* Light text color */
@@ -65,9 +66,12 @@
     margin: 10px 0;
     justify-content: space-between;
     background-color: #1e1e1e;
-
     padding: .8% 2%;
     border-radius: 10px;
+}
+
+.task {
+    width: 80%;
 }
 
 .task-list input[type="checkbox"] {
@@ -276,7 +280,7 @@
     background-color: black;
     border-radius: 15px;
     margin: 1% 0;
-    height: 80vh;
+    height: 81vh;
     overflow-y: scroll;
 }
 
@@ -333,4 +337,77 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width:1000px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+
+    .subhead {
+        margin-bottom: 0;
+        padding-bottom: 10px;
+        align-items: flex-start;
+        padding: 2%;
+    }
+
+    .logo-container {
+        margin-bottom: 0;
+    }
+
+    .main {
+        height: 78vh;
+    }
+}
+
+@media (max-width:630px) {
+    .main {
+        height: 80vh;
+    }
+
+    .task {
+        width: 70%;
+    }
+
+    .subhead {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .task-counts {
+        display: none;
+    }
+
+    .todo-app-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width:430px) {
+    .edit-button, .delete-button {
+        padding: 4px 6px;
+        font-size: 7px;
+    }
+
+    .add-task {
+        padding: 4%;
+        padding-bottom: .5%;
+    }
+
+    .add-task-container input {
+        padding: 12px;
+    }
+
+    .add-task-container button {
+        padding: 12px 25px;
+    }
+
+}
+
+@media (max-width:350px) {
+    .task {
+        width: 60%;
+    }
 }
