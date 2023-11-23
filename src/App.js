@@ -1,7 +1,6 @@
-// App.js
 import React from "react";
 import TodoApp from "./TodoApp";
-import { TaskProvider } from "./TaskContext";
+import TaskProvider from "./context/TaskProvider";
 
 const App = () => {
   return (

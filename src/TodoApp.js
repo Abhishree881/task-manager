@@ -1,7 +1,12 @@
-// TodoApp.js
 import React, { useContext, useState } from "react";
-import { TaskContext } from "./TaskContext";
-import "./TodoApp.css"; // Import the CSS file for styling
+import { TaskContext } from "./context/TaskContext";
+import "./style/TodoApp.css";
+import TodoHeader from "./components/TodoHeader";
+import FilterButtons from "./components/FilterButtons";
+import TaskCounts from "./components/TaskCounts";
+import TaskList from "./components/TaskList";
+import AddTaskForm from "./components/AddTaskForm";
+import EditDialog from "./components/EditDialog";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
 
@@ -80,87 +85,32 @@ const TodoApp = () => {
 
   return (
     <div className="todo-app-container">
-      <div className="logo-container">
-        <div className="logo">T</div>
-        <h1>Todo App</h1>
-      </div>
-      <div className="filter-buttons">
-        <button
-          className={filter === "all" ? "active" : ""}
-          onClick={() => setFilter("all")}
-        >
-          All
-        </button>
-        <button
-          className={filter === "completed" ? "active" : ""}
-          onClick={() => setFilter("completed")}
-        >
-          Completed
-        </button>
-        <button
-          className={filter === "incomplete" ? "active" : ""}
-          onClick={() => setFilter("incomplete")}
-        >
-          Incomplete
-        </button>
-      </div>
-      <div className="task-counts">
-        <p>Total Tasks: {totalTasks}</p>
-        <p>Completed Tasks: {completedTasks}</p>
-        <p>Incomplete Tasks: {incompleteTasks}</p>
-      </div>
-      <ul className="task-list">
-        {filteredTasks.map((task) => (
-          <li key={task.id}>
-            <input
-              type="checkbox"
-              checked={task.completed}
-              onChange={() => toggleTaskCompletion(task.id, task.completed)}
-            />
-            {task.completed ? (
-              <span className="completed-task">{task.title}</span>
-            ) : (
-              <span>{task.title}</span>
-            )}
-            <button
-              className="edit-button"
-              onClick={() => openEditDialog(task.id, task.title)}
-            >
-              Edit
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => deleteTask(task.id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-      <div className="add-task-container">
-        <input
-          type="text"
-          placeholder="New task..."
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-        />
-        <button className="add-task-button" onClick={addTask}>
-          Add Task
-        </button>
-      </div>
+      <TodoHeader />
+      <FilterButtons filter={filter} setFilter={setFilter} />
+      <TaskCounts
+        totalTasks={totalTasks}
+        completedTasks={completedTasks}
+        incompleteTasks={incompleteTasks}
+      />
+      <TaskList
+        filteredTasks={filteredTasks}
+        toggleTaskCompletion={toggleTaskCompletion}
+        openEditDialog={openEditDialog}
+        deleteTask={deleteTask}
+      />
+      <AddTaskForm
+        newTask={newTask}
+        setNewTask={setNewTask}
+        addTask={addTask}
+      />
       {editTaskId !== null && (
-        <div className="edit-dialog-overlay">
-          <div className="edit-dialog">
-            <p>Edit Task:</p>
-            <input
-              type="text"
-              value={editTaskTitle}
-              onChange={(e) => setEditTaskTitle(e.target.value)}
-            />
-            <button onClick={saveEditedTask}>Save</button>
-            <button onClick={closeEditDialog}>Cancel</button>
-          </div>
-        </div>
+        <EditDialog
+          editTaskId={editTaskId}
+          editTaskTitle={editTaskTitle}
+          setEditTaskTitle={setEditTaskTitle}
+          saveEditedTask={saveEditedTask}
+          closeEditDialog={closeEditDialog}
+        />
       )}
     </div>
   );

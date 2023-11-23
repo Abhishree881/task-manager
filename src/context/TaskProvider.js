@@ -1,13 +1,11 @@
-// TaskContext.js
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
+import { TaskContext } from "./TaskContext";
 
 const initialState = {
   tasks: [],
   loading: true,
   error: null,
 };
-
-const TaskContext = createContext();
 
 const taskReducer = (state, action) => {
   switch (action.type) {
@@ -68,4 +66,4 @@ const TaskProvider = ({ children }) => {
   );
 };
 
-export { TaskContext, TaskProvider };
+export default TaskProvider;
