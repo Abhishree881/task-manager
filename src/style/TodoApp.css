@@ -1,3 +1,5 @@
+/* Main Container ----------------------------------------*/
+
 .todo-app-container {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -7,6 +9,48 @@
     color: #fff;
     /* Light text color */
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0 2%;
+    border-radius: 15px;
+}
+
+.subhead {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Logo designer  ---------------------------------------*/
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    background-color: #3498db;
+    /* Blue background color */
+    color: #fff;
+    /* Light text color */
+    font-size: 24px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* Filter buttons ---------------------------------------*/
 
 .filter-buttons button {
     margin-right: 10px;
@@ -26,6 +70,8 @@
     background-color: #555;
     /* Darker background color for the active filter */
 }
+
+/* Counter buttons ---------------------------------------*/
 
 .task-counts p {
     padding: 8px 12px;
@@ -53,6 +99,30 @@
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+/* Task lists ---------------------------------------*/
+
+.main {
+    background-color: black;
+    border-radius: 15px;
+    margin: 1% 0;
+    height: 81vh;
+    overflow-y: scroll;
+}
+
+.tasks-list {
+    padding: 2%;
+    padding-top: 0;
+}
+
+.main::-webkit-scrollbar {
+    width: 0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
 }
 
 .task-list {
@@ -117,6 +187,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    padding: 2%;
 }
 
 .add-task-container input {
@@ -147,27 +218,44 @@
     background-color: #555;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.custom-checkbox {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    cursor: pointer;
+    /* Change border color */
+    background-color: #fff;
+    /* Change background color */
+    position: relative;
+    margin-right: 10px;
+    appearance: none;
+    background-color: #333;
+    /* Remove default appearance */
+    outline: none;
+    /* Remove default focus outline */
 }
 
-.logo {
-    background-color: #3498db;
-    /* Blue background color */
-    color: #fff;
-    /* Light text color */
-    font-size: 24px;
-    font-weight: bold;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
+.custom-checkbox:checked {
+    background-color: #333;
+    border-color: #333;
+    /* Change background color for checked state */
 }
+
+.custom-checkbox:checked::after {
+    content: '\2713';
+    /* Unicode checkmark character */
+    font-size: 14px;
+    color: #fff;
+    color: #00FF00;
+    /* Change color of the checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Dialog box for edit ---------------------------------------*/
 
 .edit-dialog-overlay {
     position: fixed;
@@ -235,6 +323,8 @@
     background-color: #444;
 }
 
+/* Sweetalert customization ---------------------------------------*/
+
 .swal2-popup {
     background-color: #2d2d2d;
     /* Dark background color */
@@ -260,84 +350,7 @@
     /* Button background color */
 }
 
-.header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: black;
-    padding: 0 2%;
-    border-radius: 15px;
-}
-
-.subhead {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.main {
-    background-color: black;
-    border-radius: 15px;
-    margin: 1% 0;
-    height: 81vh;
-    overflow-y: scroll;
-}
-
-.add-task {
-    padding: 2%;
-}
-
-.tasks-list {
-    padding: 2%;
-    padding-top: 0;
-}
-
-.main::-webkit-scrollbar {
-    width: 0;
-}
-
-.task {
-    display: flex;
-    align-items: center;
-}
-
-.custom-checkbox {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid #333;
-    cursor: pointer;
-    /* Change border color */
-    background-color: #fff;
-    /* Change background color */
-    position: relative;
-    margin-right: 10px;
-    appearance: none;
-    background-color: #333;
-    /* Remove default appearance */
-    outline: none;
-    /* Remove default focus outline */
-}
-
-.custom-checkbox:checked {
-    background-color: #333;
-    border-color: #333;
-    /* Change background color for checked state */
-}
-
-.custom-checkbox:checked::after {
-    content: '\2713';
-    /* Unicode checkmark character */
-    font-size: 14px;
-    color: #fff;
-    color: #00FF00;
-    /* Change color of the checkmark */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+/* Media Queries ---------------------------------------*/
 
 @media (max-width:1000px) {
     .header {
@@ -349,7 +362,6 @@
     .subhead {
         margin-bottom: 0;
         padding-bottom: 10px;
-        align-items: flex-start;
         padding: 2%;
     }
 
@@ -377,6 +389,7 @@
 
     .subhead {
         flex-direction: column;
+        align-items: flex-start;
         gap: 0;
     }
 
